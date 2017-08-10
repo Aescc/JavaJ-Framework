@@ -7,16 +7,17 @@ import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import framework.Keyboard;
+
 @SuppressWarnings( "serial" )
 public class MainWindow extends JPanel
 {
 	static JFrame frame = new JFrame();
 	static MainWindow window = new MainWindow();
+	Keyboard kbd = new Keyboard();
 	
-	final static int SCREEN_WIDTH = 800;
-	final static int SCREEN_HEIGHT = 600;
-	
-	private static boolean[] keyMap;
+	public final static int SCREEN_WIDTH = 800;
+	public final static int SCREEN_HEIGHT = 600;
 	// User Variables \/ \/ \/
 	
 	//
@@ -29,15 +30,15 @@ public class MainWindow extends JPanel
 		frame.setVisible( true );
 		frame.add( window );
 		
-		while ( true )
+		while( 3 < 4 )
 		{
-			Update();
+			window.Update();
 			window.repaint();
 			Thread.sleep( 10 );
 		}
 	}
 	
-	private MainWindow()
+	public MainWindow()
 	{
 		addKeyListener( new KeyListener()
 		{
@@ -49,19 +50,21 @@ public class MainWindow extends JPanel
 			@Override
 			public void keyReleased( KeyEvent e )
 			{
-				keyMap[e.getKeyCode()] = false;
+				// keyMap[e.getKeyCode()] = false;
+				kbd.SetKey( e.getKeyCode(),false );
 			}
 			@Override
 			public void keyPressed( KeyEvent e )
 			{
-				keyMap[e.getKeyCode()] = true;
+				// keyMap[e.getKeyCode()] = true;
+				kbd.SetKey( e.getKeyCode(),true );
 			}
 		} );
 		
 		setFocusable( true );
 	}
 	
-	private static void Update()
+	private void Update()
 	{
 		// Update Stuff \/ \/ \/
 		
@@ -76,16 +79,6 @@ public class MainWindow extends JPanel
 		// Draw Stuff \/ \/ \/
 		
 		//
-	}
-	
-	public boolean KeyDown( int keyCode )
-	{
-		return keyMap[keyCode];
-	}
-	
-	public boolean KeyDown( char keyChar )
-	{
-		return keyMap[(int)keyChar];
 	}
 	// User Functions \/ \/ \/
 	

@@ -51,6 +51,7 @@ public class MainWindow extends JPanel
 			@Override
 			public void keyPressed( KeyEvent e )
 			{
+				// TODO: Fix this :D
 				System.out.println( e.getKeyChar() );
 			}
 		} );

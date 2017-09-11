@@ -15,33 +15,33 @@ import user_files.YourFileName;
 @SuppressWarnings( "serial" )
 public class Window extends JPanel
 {
-	static JFrame frame = new JFrame();
-	static Window window = new Window();
-	Keyboard kbd = new Keyboard();
+	static JFrame   frm = new JFrame();
+	static Window   wnd = new Window();
+	       Keyboard kbd = new Keyboard();
 	
-	public final static int SCREEN_WIDTH = 800;
-	public final static int SCREEN_HEIGHT = 600;
+	public static final int SCREEN_WIDTH = 800;
+	public static final int SCREEN_HEIGHT = 600;
+	
 	// User Variables \/ \/ \/
 	private YourFileName test = new YourFileName();
 	//
 	public static void main( String[] args ) throws InterruptedException
 	{
-		frame.setTitle( "JavaJ Framework 1.0.3" );
+		frm.setTitle( "JavaJ Framework 1.0.4" );
 		
-		frame.getContentPane().setPreferredSize( new Dimension( SCREEN_WIDTH,SCREEN_HEIGHT ) );
-		frame.pack();
+		frm.getContentPane().setPreferredSize( new Dimension( SCREEN_WIDTH,SCREEN_HEIGHT ) );
+		frm.pack();
 		
-		frame.setVisible(true);
-		frame.setResizable( false );
+		frm.setVisible( true );
+		frm.setResizable( false );
+		frm.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 		
-		frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-		
-		frame.add( window );
+		frm.add( wnd );
 		
 		while( 3 < 4 )
 		{
-			window.Update();
-			window.repaint();
+			wnd.Update();
+			wnd.repaint();
 			Thread.sleep( 10 );
 		}
 	}

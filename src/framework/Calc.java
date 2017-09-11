@@ -4,29 +4,29 @@ import java.lang.Math;
 
 public class Calc
 {
-	public static int FindAngle( int x1,int y1,int x2,int y2 )
+	public static float FindAngle( float x1,float y1,float x2,float y2 )
 	{
-		final int deltaX = x2 - x1;
-		final int deltaY = y2 - y1;
-		int theta = (int)Math.atan2( deltaY,deltaX );
-		theta *= ( 180 / Math.PI );
-		return theta;
+		final float deltaX = x2 - x1;
+		final float deltaY = y2 - y1;
+		
+		float theta = (float)( Math.atan2( deltaY,deltaX ) );
+		
+		return (float)( theta * ( 180 / Math.PI ) );
 	}
-	public static int FindDist( int x1,int y1,int x2,int y2 )
+	public static float FindDist( float x1,float y1,float x2,float y2 )
 	{
-		final int deltaX = x2 - x1;
-		final int deltaY = y2 - y1;
-		final int distance = (int)Math.sqrt( ( deltaX * deltaX ) + ( deltaY * deltaY ) );
+		final float deltaX = x2 - x1;
+		final float deltaY = y2 - y1;
+		
+		final float distance = (float)( Math.sqrt( ( deltaX * deltaX ) + ( deltaY * deltaY ) ) );
+		
 		return distance;
 	}
-	public static boolean HitTest( int x1,int y1,int w1,int h1,
-		int x2,int y2,int w2,int h2 )
+	public static boolean HitTest( float x1,float y1,float w1,float h1,
+		float x2,float y2,float w2,float h2 )
 	{
-		if( x1 < x2 + w2 && x1 + w1 > x2 &&
-			y1 < y2 + h2 && y1 + h1 > y2)
-			return true;
-		else
-			return false;
+		return( x1 < x2 + w2 && x1 + w1 > x2 &&
+			y1 < y2 + h2 && y1 + h1 > y2);
 	}
 	public static int Random( int min,int max )
 	{
@@ -36,7 +36,7 @@ public class Calc
 			max = min;
 			min = temp;
 		}
-		final int randNum = (int)Math.floor( Math.random() * ( 1 + max - min ) ) + min;
+		final int randNum = (int)( Math.floor( Math.random() * ( 1 + max - min ) ) + min );
 		return randNum;
 	}
 }

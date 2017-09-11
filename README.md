@@ -1,4 +1,4 @@
-# JavaJ-Framework v1.0.3
+# JavaJ-Framework v1.0.4
 Some simple things to help out in Java!
 
 Opening with Eclipse:

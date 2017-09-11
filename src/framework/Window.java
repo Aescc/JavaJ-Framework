@@ -26,7 +26,7 @@ public class Window extends JPanel
 	//
 	public static void main( String[] args ) throws InterruptedException
 	{
-		frame.setTitle( "JavaJ Framework 1.0.1" );
+		frame.setTitle( "JavaJ Framework 1.0.3" );
 		
 		frame.getContentPane().setPreferredSize( new Dimension( SCREEN_WIDTH,SCREEN_HEIGHT ) );
 		frame.pack();

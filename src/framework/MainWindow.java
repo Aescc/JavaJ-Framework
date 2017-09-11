@@ -1,6 +1,7 @@
 package framework;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -8,6 +9,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import framework.Keyboard;
+
+import user_files.YourFileName;
 
 @SuppressWarnings( "serial" )
 public class MainWindow extends JPanel
@@ -19,15 +22,20 @@ public class MainWindow extends JPanel
 	public final static int SCREEN_WIDTH = 800;
 	public final static int SCREEN_HEIGHT = 600;
 	// User Variables \/ \/ \/
-	
+	private YourFileName test = new YourFileName();
 	//
 	public static void main( String[] args ) throws InterruptedException
 	{
-		frame.setTitle( "Java Framework" );
-		frame.setSize( SCREEN_WIDTH,SCREEN_HEIGHT );
+		frame.setTitle( "JavaJ Framework 1.0.1" );
+		
+		frame.getContentPane().setPreferredSize( new Dimension( SCREEN_WIDTH,SCREEN_HEIGHT ) );
+		frame.pack();
+		
+		frame.setVisible(true);
 		frame.setResizable( false );
+		
 		frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-		frame.setVisible( true );
+		
 		frame.add( window );
 		
 		while( 3 < 4 )
@@ -72,15 +80,17 @@ public class MainWindow extends JPanel
 	}
 	
 	@Override
-	public void paint( Graphics g )
+	public void paint( Graphics gfx )
 	{
-		g.setColor( Color.black );
-		g.fillRect( 0,0,SCREEN_WIDTH,SCREEN_HEIGHT );
+		gfx.translate( 5,5 );
+		
+		gfx.setColor( Color.black );
+		gfx.fillRect( 0,0,SCREEN_WIDTH,SCREEN_HEIGHT );
 		// Draw Stuff \/ \/ \/
 		
 		//
 	}
-	// User Functions \/ \/ \/
+	// User Defined Functions \/ \/ \/
 	
 	//
 }

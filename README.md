@@ -1,4 +1,4 @@
-# JavaJ-Framework v1.0.2
+# JavaJ-Framework v1.0.1
 Some simple things to help out in Java!
 
 Opening with Eclipse:
@@ -8,4 +8,5 @@ Opening with Eclipse:
 - Enjoy!
 
 ## TODO:
+- Separate graphics from MainWindow class if possible.
 - Make keyboard input handling a little less messy(if possible).

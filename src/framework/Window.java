@@ -3,12 +3,17 @@ package framework;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import framework.Keyboard;
+import framework.Mouse;
 
 import user_files.YourFileName;
 
@@ -18,6 +23,7 @@ public class Window extends JPanel
 	static JFrame   frm = new JFrame();
 	static Window   wnd = new Window();
 	       Keyboard kbd = new Keyboard();
+	       Mouse    ms = new Mouse();
 	
 	public static final int SCREEN_WIDTH = 800;
 	public static final int SCREEN_HEIGHT = 600;
@@ -27,7 +33,7 @@ public class Window extends JPanel
 	//
 	public static void main( String[] args ) throws InterruptedException
 	{
-		frm.setTitle( "JavaJ Framework 1.0.4" );
+		frm.setTitle( "JavaJ Framework 1.1.0" );
 		
 		frm.getContentPane().setPreferredSize( new Dimension( SCREEN_WIDTH,SCREEN_HEIGHT ) );
 		frm.pack();
@@ -58,14 +64,12 @@ public class Window extends JPanel
 			@Override
 			public void keyReleased( KeyEvent e )
 			{
-				// keyMap[e.getKeyCode()] = false;
-				kbd.SetKey( e.getKeyCode(),false );
+				kbd.Key( e.getKeyCode(),false );
 			}
 			@Override
 			public void keyPressed( KeyEvent e )
 			{
-				// keyMap[e.getKeyCode()] = true;
-				kbd.SetKey( e.getKeyCode(),true );
+				kbd.Key( e.getKeyCode(),true );
 			}
 		} );
 		
@@ -74,6 +78,12 @@ public class Window extends JPanel
 	
 	private void Update()
 	{
+		final Point mousePos = frm.getContentPane().getMousePosition();
+		if( mousePos != null )
+		{
+			ms.X( mousePos.x );
+			ms.Y( mousePos.y );
+		}
 		// Update Stuff \/ \/ \/
 		
 		//
@@ -87,7 +97,7 @@ public class Window extends JPanel
 		gfx.setColor( Color.black );
 		gfx.fillRect( 0,0,SCREEN_WIDTH,SCREEN_HEIGHT );
 		// Draw Stuff \/ \/ \/
-		
+		test.Draw( gfx );
 		//
 	}
 	// User Defined Functions \/ \/ \/

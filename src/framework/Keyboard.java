@@ -10,7 +10,7 @@ public class Keyboard
 			keyMap[i] = false;
 	}
 	
-	public void SetKey( int keyCode,boolean value )
+	public void Key( int keyCode,boolean value )
 	{
 		keyMap[keyCode] = value;
 	}

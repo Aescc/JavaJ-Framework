@@ -6,9 +6,14 @@ public class Mouse
 	private int x = 0;
 	private int y = 0;
 	
-	public boolean MouseDown()
+	public boolean IsDown()
 	{
 		return mouseIsPressed;
+	}
+	
+	public void IsDown( boolean isPressed )
+	{
+		mouseIsPressed = isPressed;
 	}
 	
 	public int X()

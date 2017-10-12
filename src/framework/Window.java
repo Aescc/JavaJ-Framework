@@ -6,8 +6,8 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -23,7 +23,7 @@ public class Window extends JPanel
 	static JFrame   frm = new JFrame();
 	static Window   wnd = new Window();
 	       Keyboard kbd = new Keyboard();
-	       Mouse    ms = new Mouse();
+	       Mouse    ms  = new Mouse();
 	
 	public static final int SCREEN_WIDTH = 800;
 	public static final int SCREEN_HEIGHT = 600;
@@ -72,6 +72,21 @@ public class Window extends JPanel
 				kbd.Key( e.getKeyCode(),true );
 			}
 		} );
+		
+		addMouseListener( new MouseAdapter()
+		{
+            @Override
+            public void mousePressed( MouseEvent e )
+            {
+            	ms.IsDown( true );
+            }
+
+            @Override
+            public void mouseReleased( MouseEvent e )
+            {
+                ms.IsDown( false );
+            }
+        } );
 		
 		setFocusable( true );
 	}

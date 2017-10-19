@@ -3,12 +3,17 @@ package framework;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -33,7 +38,7 @@ public class Window extends JPanel
 	//
 	public static void main( String[] args ) throws InterruptedException
 	{
-		frm.setTitle( "JavaJ Framework 1.1.0" );
+		frm.setTitle( "JavaJ Framework 1.1.1" );
 		
 		frm.getContentPane().setPreferredSize( new Dimension( SCREEN_WIDTH,SCREEN_HEIGHT ) );
 		frm.pack();
@@ -89,6 +94,20 @@ public class Window extends JPanel
         } );
 		
 		setFocusable( true );
+	}
+	
+	public void DrawImage( int x,int y,int width,int height,String url,Graphics gfx )
+	{
+		Image img = null;
+		try
+		{
+			img = ImageIO.read( new File( url ) );
+		}
+		catch ( IOException e )
+		{
+			e.printStackTrace();
+		}
+		gfx.drawImage( img,x,y,width,height,wnd );
 	}
 	
 	private void Update()

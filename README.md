@@ -11,4 +11,4 @@ Opening with Eclipse:
 - Separate graphics from MainWindow class if possible.
 - Make keyboard input handling a little less messy(if possible).
 - Clean up mouse movement handling as well.
-- Check for mouse clicking(because I forgot)..
+- Make DrawImage less intensive.

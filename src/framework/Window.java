@@ -33,12 +33,15 @@ public class Window extends JPanel
 	public static final int SCREEN_WIDTH = 800;
 	public static final int SCREEN_HEIGHT = 600;
 	
+	Image[] images = new Image[50];
+	int curImage = 0;
+	
 	// User Variables \/ \/ \/
 	private YourFileName test = new YourFileName();
 	//
 	public static void main( String[] args ) throws InterruptedException
 	{
-		frm.setTitle( "JavaJ Framework 1.1.1" );
+		frm.setTitle( "JavaJ Framework 1.1.2" );
 		
 		frm.getContentPane().setPreferredSize( new Dimension( SCREEN_WIDTH,SCREEN_HEIGHT ) );
 		frm.pack();
@@ -96,7 +99,7 @@ public class Window extends JPanel
 		setFocusable( true );
 	}
 	
-	public void DrawImage( int x,int y,int width,int height,String url,Graphics gfx )
+	public int LoadImage( String url )
 	{
 		Image img = null;
 		try
@@ -107,7 +110,13 @@ public class Window extends JPanel
 		{
 			e.printStackTrace();
 		}
-		gfx.drawImage( img,x,y,width,height,wnd );
+		images[curImage++] = img;
+		return curImage - 1;
+	}
+	
+	public void DrawImage( int id,int x,int y,int width,int height,Graphics gfx )
+	{
+		gfx.drawImage( images[id],x,y,width,height,wnd );
 	}
 	
 	private void Update()

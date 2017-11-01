@@ -3,24 +3,19 @@ package framework;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import framework.Keyboard;
 import framework.Mouse;
-
-import user_files.YourFileName;
+import framework.Graphic;
+import framework.Game;
 
 @SuppressWarnings( "serial" )
 public class Window extends JPanel
@@ -29,19 +24,15 @@ public class Window extends JPanel
 	static Window   wnd = new Window();
 	       Keyboard kbd = new Keyboard();
 	       Mouse    ms  = new Mouse();
+	       Graphic  fx = new Graphic( frm );
+	       Game theGame = new Game();
 	
 	public static final int SCREEN_WIDTH = 800;
 	public static final int SCREEN_HEIGHT = 600;
-	
-	Image[] images = new Image[50];
-	int curImage = 0;
-	
-	// User Variables \/ \/ \/
-	private YourFileName test = new YourFileName();
-	//
+	// 
 	public static void main( String[] args ) throws InterruptedException
 	{
-		frm.setTitle( "JavaJ Framework 1.1.2" );
+		frm.setTitle( "JavaJ Framework 1.2.0" );
 		
 		frm.getContentPane().setPreferredSize( new Dimension( SCREEN_WIDTH,SCREEN_HEIGHT ) );
 		frm.pack();
@@ -99,26 +90,6 @@ public class Window extends JPanel
 		setFocusable( true );
 	}
 	
-	public int LoadImage( String url )
-	{
-		Image img = null;
-		try
-		{
-			img = ImageIO.read( new File( url ) );
-		}
-		catch ( IOException e )
-		{
-			e.printStackTrace();
-		}
-		images[curImage++] = img;
-		return curImage - 1;
-	}
-	
-	public void DrawImage( int id,int x,int y,int width,int height,Graphics gfx )
-	{
-		gfx.drawImage( images[id],x,y,width,height,wnd );
-	}
-	
 	private void Update()
 	{
 		final Point mousePos = frm.getContentPane().getMousePosition();
@@ -127,9 +98,7 @@ public class Window extends JPanel
 			ms.X( mousePos.x );
 			ms.Y( mousePos.y );
 		}
-		// Update Stuff \/ \/ \/
-		
-		//
+		theGame.Update();
 	}
 	
 	@Override
@@ -139,11 +108,6 @@ public class Window extends JPanel
 		
 		gfx.setColor( Color.black );
 		gfx.fillRect( 0,0,SCREEN_WIDTH,SCREEN_HEIGHT );
-		// Draw Stuff \/ \/ \/
-		test.Draw( gfx );
-		//
+		theGame.Draw( gfx );
 	}
-	// User Defined Functions \/ \/ \/
-	
-	//
 }

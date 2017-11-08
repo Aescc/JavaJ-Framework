@@ -20,38 +20,34 @@ import framework.Game;
 @SuppressWarnings( "serial" )
 public class Window extends JPanel
 {
-	static JFrame   frm = new JFrame();
-	static Window   wnd = new Window();
-	       Keyboard kbd = new Keyboard();
-	       Mouse    ms  = new Mouse();
-	       Graphic  fx = new Graphic( frm );
-	       Game theGame = new Game();
-	
+	Game theGame = new Game();
 	public static final int SCREEN_WIDTH = 800;
 	public static final int SCREEN_HEIGHT = 600;
 	// 
 	public static void main( String[] args ) throws InterruptedException
 	{
-		frm.setTitle( "JavaJ Framework 1.2.0" );
+		JFrame   frm = new JFrame();
+		Keyboard kbd = new Keyboard();
+		Mouse    ms  = new Mouse();
+		Window   wnd = new Window( kbd,ms );
 		
+		frm.setTitle( "JavaJ Framework 1.2.1" );
 		frm.getContentPane().setPreferredSize( new Dimension( SCREEN_WIDTH,SCREEN_HEIGHT ) );
 		frm.pack();
-		
 		frm.setVisible( true );
 		frm.setResizable( false );
 		frm.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-		
 		frm.add( wnd );
 		
 		while( 3 < 4 )
 		{
-			wnd.Update();
+			wnd.Update( frm,ms );
 			wnd.repaint();
 			Thread.sleep( 10 );
 		}
 	}
 	
-	public Window()
+	public Window( Keyboard kbd,Mouse ms )
 	{
 		addKeyListener( new KeyListener()
 		{
@@ -90,7 +86,7 @@ public class Window extends JPanel
 		setFocusable( true );
 	}
 	
-	private void Update()
+	private void Update( JFrame frm,Mouse ms )
 	{
 		final Point mousePos = frm.getContentPane().getMousePosition();
 		if( mousePos != null )
